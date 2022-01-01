@@ -1,6 +1,3 @@
-main()
-{
-
 /************************************************************************************************************************************************* 
  Project Name   : RECYCLABLE WASTES DEPOSIT MEASUREMENT MACHINE
  Revision Date  : 30.12.2021
@@ -207,7 +204,7 @@ void dispose()
           delay(1000);                             // Waited 1 second.
          }
          
-  if ((optic == HIGH) && (inductive == LOW))       // If the metal can waste exists.
+        if ((optic == HIGH) && (inductive == LOW))       // If the metal can waste exists.
         {
               for (pos = 90; pos >= 15; pos -= 1)
                 {
@@ -225,4 +222,3 @@ void dispose()
        }
 
   }
-}
