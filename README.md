@@ -102,91 +102,92 @@ void loop()
   start = digitalRead(10);        // Start button is connected to Digital 10 pin.
   confirmation = digitalRead(11); // Confirmation button is connected to Digital 11 pin.
   
-  if ((start == HIGH) && (optic == HIGH)) // If the waste exists and start button has been pressed.
-  { 
-    lcd.begin();                    // LCD has been activated.
-    lcd.backlight();                // LCD is ON.
-    lcd.setCursor(0, 0);
-    lcd.print(" READING WASTE  ");  // First line has been printed.
-    lcd.setCursor(0, 1);
-    lcd.print("  PLEASE WAIT   ");  // Second line has been printed.
-    delay(3000);                    // Waited 3 seconds.
+         if ((start == HIGH) && (optic == HIGH)) // If the waste exists and start button has been pressed.
+         { 
+          lcd.begin();                    // LCD has been activated.
+          lcd.backlight();                // LCD is ON.
+          lcd.setCursor(0, 0);
+          lcd.print(" READING WASTE  ");  // First line has been printed.
+          lcd.setCursor(0, 1);
+          lcd.print("  PLEASE WAIT   ");  // Second line has been printed.
+          delay(3000);                    // Waited 3 seconds.
   
-   read_();    // Read function has been called.
-   dispose();  // Dispose function has been called.
-   }
-}
-void read_()
-{  
- if ((optic == HIGH) && (inductive == HIGH) && (mz1 == LOW) && (mz2 == LOW) && (mz3 == LOW)) // Variables for big size plastic bottle has been assigned.  
-{     type = String("PET");
-      size_ = String("BIG");
-      cost = 50;
-}
+          read_();    // Read function has been called.
+          dispose();  // Dispose function has been called.
+          }
+         }
+         void read_()
+         {  
+         if ((optic == HIGH) && (inductive == HIGH) && (mz1 == LOW) && (mz2 == LOW) && (mz3 == LOW)) // Variables for big size plastic bottle has been assigned.  
+         {type = String("PET");
+         size_ = String("BIG");
+         cost = 50;
+         }
  
- if ((optic == HIGH) && (inductive == HIGH) && (mz1 == HIGH) && (mz2 == LOW) && (mz3 == LOW)) // Variables for medium size plastic bottle has been assigned.
-{     type = String("PET");  
-      size_ = String("MEDIUM");
-      cost = 40;
-}
+         if ((optic == HIGH) && (inductive == HIGH) && (mz1 == HIGH) && (mz2 == LOW) && (mz3 == LOW)) // Variables for medium size plastic bottle has been assigned.
+         {type = String("PET");  
+         size_ = String("MEDIUM");
+         cost = 40;
+         }
  
- if ((optic == HIGH) && (inductive == HIGH) && (mz1 == HIGH) && (mz2 == HIGH) && (mz3 == LOW)) // Variables for small size plastic bottle has been assigned.
-{     type = String("PET");
-      size_ = String("SMALL");
-      cost = 25;
-}
-  if ((optic == HIGH) && (inductive == LOW) && (mz1 == LOW) && (mz2 == LOW) && (mz3 == LOW)) // Variables for big size metal can has been assigned. 
-{      type = String("METAL");
-       size_ = String("BIG");
-       cost = 75;
-}
+         if ((optic == HIGH) && (inductive == HIGH) && (mz1 == HIGH) && (mz2 == HIGH) && (mz3 == LOW)) // Variables for small size plastic bottle has been assigned.
+         {type = String("PET");
+         size_ = String("SMALL");
+         cost = 25;
+         }
+         
+         if ((optic == HIGH) && (inductive == LOW) && (mz1 == LOW) && (mz2 == LOW) && (mz3 == LOW)) // Variables for big size metal can has been assigned. 
+         {type = String("METAL");
+         size_ = String("BIG");
+         cost = 75;
+         }
  
- if ((optic == HIGH) && (inductive == LOW) && (mz1 == HIGH) && (mz2 == HIGH) && (mz3 == LOW)) // Variables for medium size metal can has been assigned. 
-{     type = String("METAL");  
-      size_ = String("MEDIUM");
-      cost = 50;
-}
+         if ((optic == HIGH) && (inductive == LOW) && (mz1 == HIGH) && (mz2 == HIGH) && (mz3 == LOW)) // Variables for medium size metal can has been assigned. 
+         {type = String("METAL");  
+         size_ = String("MEDIUM");
+         cost = 50;
+         }
  
- if ((optic == HIGH) && (inductive == LOW) && (mz1 == HIGH) && (mz2 == HIGH) && (mz3 == HIGH)) // Variables for small size metal can has been assigned. 
- {    type = String("METAL");
-      size_ = String("SMALL");
-      cost = 35;
- }
+         if ((optic == HIGH) && (inductive == LOW) && (mz1 == HIGH) && (mz2 == HIGH) && (mz3 == HIGH)) // Variables for small size metal can has been assigned. 
+         {type = String("METAL");
+         size_ = String("SMALL");
+         cost = 35;
+         }
   
-  // Waste information has been printed to LCD screen.
+         // Waste information has been printed to LCD screen.
    
-  lcd.begin();                    // LCD has been activated.
-  lcd.backlight();                // LCD is ON.
-  lcd.setCursor(0, 0);
-  lcd.print(type);                // First line has been printed.
-  lcd.setCursor(7, 0);
-  lcd.print(size_); 
-  lcd.setCursor(13, 0);
-  lcd.print("SIZE"); 
-  lcd.setCursor(0, 1);
-  lcd.print("COST =");            // Second line has been printed.
-  lcd.setCursor(8, 1);
-  lcd.print(cost); 
-  lcd.setCursor(11, 1);
-  lcd.print("KURUS");
-  delay(5000);                    // Waited 5 seconds.
+         lcd.begin();                    // LCD has been activated.
+         lcd.backlight();                // LCD is ON.
+         lcd.setCursor(0, 0);
+         lcd.print(type);                // First line has been printed.
+         lcd.setCursor(7, 0);
+         lcd.print(size_); 
+         lcd.setCursor(13, 0);
+         lcd.print("SIZE"); 
+         lcd.setCursor(0, 1);
+         lcd.print("COST =");            // Second line has been printed.
+         lcd.setCursor(8, 1);
+         lcd.print(cost); 
+         lcd.setCursor(11, 1);
+         lcd.print("KURUS");
+         delay(5000);                    // Waited 5 seconds.
   
- do { 
-  lcd.begin();                    // LCD has been activated.
-  lcd.backlight();                // LCD is ON.
-  lcd.setCursor(0, 0);
-  lcd.print("   PRESS THE    ");  // First line has been printed.
-  lcd.setCursor(0, 1);
-  lcd.print(" CONFIRM BUTTON ");  // Second line has been printed.
-  optic = digitalRead(3);         // Diffuse Reflection Optical Sensor is connected to Digital 3 pin.
-  confirmation = digitalRead(11); // Confirmation button is connected to Digital 11 pin.
+         do {
+         lcd.begin();                    // LCD has been activated.
+         lcd.backlight();                // LCD is ON.
+         lcd.setCursor(0, 0);
+         lcd.print("   PRESS THE    ");  // First line has been printed.
+         lcd.setCursor(0, 1);
+         lcd.print(" CONFIRM BUTTON ");  // Second line has been printed.
+         optic = digitalRead(3);         // Diffuse Reflection Optical Sensor is connected to Digital 3 pin.
+         confirmation = digitalRead(11); // Confirmation button is connected to Digital 11 pin.
   
- } while((optic == HIGH) && (confirmation == LOW)); // While the waste exists and confirmation button hasn't been pressed.
+         } while((optic == HIGH) && (confirmation == LOW)); // While the waste exists and confirmation button hasn't been pressed.
 
-}
-void dispose()
-{    
-  if ((optic == HIGH) && (inductive == HIGH))       // If the plastic bottle waste exists.
+         }
+         void dispose()
+         {    
+         if ((optic == HIGH) && (inductive == HIGH))       // If the plastic bottle waste exists.
          {
              for (pos = 90; pos <= 150; pos += 1)
                 {
